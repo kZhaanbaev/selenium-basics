@@ -14,7 +14,7 @@ public class _03_BasicInteractions {
          *  4.1 Verify expected vs actual
          * 5. Print out header of the first result item
          *  5.1 Verify if word contains a word "selenium"
-         * 6. Verify if button "Shopping" is enabled
+         * 6. Verify if button "Shopping" is there. (is enabled)
          * 7. Verify if google logo on top left of the page is displayed
          */
 
@@ -31,8 +31,38 @@ public class _03_BasicInteractions {
         driver.findElement(By.name("btnK")).click();
 
         //4
-        System.out.println(driver.findElement(By.linkText("Wikipedia")).getAttribute("href"));
+        String href = driver.findElement(By.linkText("Wikipedia")).getAttribute("href");
+        System.out.println(href);
 
+        //4.1
+        String expectedHref = "https://en.wikipedia.org/wiki/Selenium";
+        if (href.equals(expectedHref)){
+            System.out.println("PASS");
+        }else {
+            System.out.println("FAIL");
+        }
+
+        //5
+        String result = driver.findElement(By.tagName("h3")).getText();
+        System.out.println(result);
+
+        //5.1
+        String expectedWord = "selenium";
+        if(result.toLowerCase().contains(expectedWord)){
+            System.out.println("PASS");
+        }else {
+            System.out.println("Search result doesn't contain the expected word " + expectedWord);
+        }
+
+        //6. Verify if button "Shopping" is there. (is enabled)
+        System.out.println(driver.findElement(By.linkText("Shopping")).isEnabled());
+
+        //7. Verify if google logo on top left of the page is displayed
+        if(driver.findElement(By.id("logo")).isDisplayed()){
+            System.out.println("PASS");
+        }else {
+            System.out.println("FAIL");
+        }
 
 
         driver.close();
