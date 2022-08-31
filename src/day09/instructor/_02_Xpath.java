@@ -10,13 +10,28 @@ public class _02_Xpath {
         driver.manage().window().maximize();
 
         //working with texts
+        //a[text()='Registry']
+        //a[text()='Alert']
 
         //sub-strings of text - starts-with
+        //a[starts-with(text(), 'Book')]
+
 
         //sub-strings of text - contains
+        //a[contains(text(), 'Music')]
+
 
         //sub-string of attribute - start-with
+        //css -> a[class^='value']
+        //xpath -> //a[starts-with(@class, 'value')]
+        //a[starts-with(@href, 'http://the-internet')]
 
         //sub-string of attribute - contains
+        //css -> a[class*='value']
+        //xpath -> //a[contains(@class, 'value')]
+        //*[contains(@class, 'nav_a')]
+
+
+        //*[text()='Car' or contains(@name, 'car') or starts-with(text(), 'C')]
     }
 }
