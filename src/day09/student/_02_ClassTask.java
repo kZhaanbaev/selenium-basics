@@ -9,6 +9,11 @@ public class _02_ClassTask {
          *      4+ million
          *      200+ million
          *      90%
+         *
+         * 3. Input "test@test.com" in email address field
+         * 4. Click on "Sign up for GithHub" button
+         * 5. Verify text "Email domain could not be verified" is displayed
+         * Note: add Thread.sleep() - about 4-5 seconds if text doesn't show up fast enough
          */
 
 
