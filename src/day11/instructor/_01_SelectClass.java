@@ -32,6 +32,11 @@ public class _01_SelectClass {
         allOptions.forEach(each -> System.out.println(each.getText()));
 
         //ClassTask 1: 10min
+        Select select2 = new Select(driver.findElement(By.name("select2")));
+
+        List<WebElement> allOptions2 = select2.getOptions();
+        allOptions2.forEach(each -> System.out.println(each.getText()));
+        select2.selectByValue("Yellow");
 
 
         Thread.sleep(3000);
