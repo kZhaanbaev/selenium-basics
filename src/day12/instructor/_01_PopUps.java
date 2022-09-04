@@ -9,7 +9,10 @@ public class _01_PopUps {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
+        //What is browser pop-ups? Pop-ups vs alerts?
 
-        
+        //Example: Pop-Up -> Message
+
+        //Class Task 1
     }
 }
