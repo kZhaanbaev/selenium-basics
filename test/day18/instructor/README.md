@@ -11,6 +11,8 @@
 <br/>
 <h5>_US1001 Login functionality_</h5>
 
+URL: https://interview-prep-test.herokuapp.com/login
+<br/>
 username: test@yahoo.com
 <br/>
 password: test123
