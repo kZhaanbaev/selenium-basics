@@ -1,0 +1,25 @@
+US1001 Login functionality
+
+Test Case 1:
+Open url https://interview-prep-test.herokuapp.com
+Input email as test@yahoo.com
+Input password as test123
+Verify Sign out button is displayed
+
+Test Case 2:
+Open url https://interview-prep-test.herokuapp.com
+Input email as blank
+Input password as test123
+Verify Incorrect username/password text is displayed
+
+Test Case 3:
+Open url https://interview-prep-test.herokuapp.com
+Input email as test@yahoo.com
+Input password as blank
+Verify Incorrect username/password text is displayed
+
+Test Case 4:
+Open url https://interview-prep-test.herokuapp.com
+Input email as qqq@yahoo.com
+Input password as test123
+Verify Incorrect username/password text is displayed
