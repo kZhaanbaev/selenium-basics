@@ -1,12 +1,20 @@
 package day19.instructor;
 
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
 public class _03_TestNGAnnotations {
-    public static void main(String[] args) {
+    /**
         System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -27,6 +35,131 @@ public class _03_TestNGAnnotations {
 
         //ClassTask 2
 
+    */
+
+//    @Test(priority = -1)
+//    public void testGoogle(){
+//        System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
+//        WebDriver driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//        driver.get("https://google.com");
+//
+//        Assert.assertEquals(driver.getTitle(), "Google");
+//        driver.close();
+//    }
+//
+//    @Test(testName = "Test Header", priority = 1)
+//    public void test02(){
+//        System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
+//        WebDriver driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//        driver.get("http://automation.techleadacademy.io/#/home");
+//
+//        String actualHeader = driver.findElement(By.id("title")).getText();
+//        String expectedHeader = "Automation with Selenium";
+//
+//        Assert.assertEquals(actualHeader, expectedHeader);
+//        driver.close();
+//    }
+//
+//    @Test(testName = "Test Input", description = "Testing if input data is displayed as expected")
+//    public void test03(){
+//        System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
+//        WebDriver driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//        driver.get("http://automation.techleadacademy.io/#/inputs");
+//
+//        String testData = "Blue Sky";
+//        driver.findElement(By.id("message")).sendKeys(testData);
+//        driver.findElement(By.name("button1")).click();
+//
+//        WebElement element = driver.findElement(By.xpath("//span[@name='message1' and text()='" + testData + "']"));
+//        Assert.assertTrue(element.isDisplayed());
+//
+//        driver.close();
+//    }
+//
+//    @Test(testName = "Test Alert", description = "Testing alert time to display", invocationCount = 6, invocationTimeOut = 40000)
+//    public void test04(){
+//        System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
+//        WebDriver driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//        driver.get("http://automation.techleadacademy.io/#/synchronization");
+//
+//        driver.findElement(By.xpath("//button[@class='btn btn-warning']")).click();
+//
+//        WebDriverWait wait = new WebDriverWait(driver, 10);
+//        wait.until(ExpectedConditions.alertIsPresent());
+//
+//        Alert alert = driver.switchTo().alert();
+//        alert.accept();
+//
+//        driver.close();
+//    }
+//
+//    @Test(testName = "Test Input timeOut", description = "Testing if input data is displayed as expected", timeOut = 8000)
+//    public void test05(){
+//        System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
+//        WebDriver driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//        driver.get("http://automation.techleadacademy.io/#/inputs");
+//
+//        String testData = "Blue Sky";
+//        driver.findElement(By.id("message")).sendKeys(testData);
+//        driver.findElement(By.name("button1")).click();
+//
+//        WebElement element = driver.findElement(By.xpath("//span[@name='message1' and text()='" + testData + "']"));
+//        Assert.assertTrue(element.isDisplayed());
+//
+//        driver.close();
+//    }
+
+    @DataProvider(name = "navButtons")
+    public Object[][] dataP(){
+        Object[][] data = new Object[6][2];
+
+        data[0][0] = "Home";
+        data[0][1] = "http://automation.techleadacademy.io/#/home";
+
+        data[1][0] = "Curriculum";
+        data[1][1] = "http://automation.techleadacademy.io/#/curriculum";
+
+        data[2][0] = "Notes21";
+        data[2][1] = "http://automation.techleadacademy.io/#/notes";
+
+        data[3][0] = "Inputs";
+        data[3][1] = "http://automation.techleadacademy.io/#/inputs";
+
+        data[4][0] = "Selectors";
+        data[4][1] = "http://automation.techleadacademy.io/#/selectors21";
+
+        data[5][0] = "Select-class";
+        data[5][1] = "http://automation.techleadacademy.io/#/selectclass";
+
+        return data;
     }
+
+    @Test(testName = "Data Provider test", dataProvider = "navButtons")
+    public void test06(String btnName, String url){
+        //Verify all 18 navigation buttons are working as expected by taking to correct pages
+        System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.get("http://automation.techleadacademy.io");
+
+        driver.findElement(By.linkText(btnName)).click();
+        Assert.assertEquals(driver.getCurrentUrl(), url);
+
+        driver.close();
+    }
+
+
+
 
 }
