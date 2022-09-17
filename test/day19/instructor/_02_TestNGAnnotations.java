@@ -1,14 +1,16 @@
 package day19.instructor;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.testng.Assert.assertEquals;
-
 public class _02_TestNGAnnotations {
-    public static void main(String[] args) {
+    /**
         System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -20,10 +22,68 @@ public class _02_TestNGAnnotations {
 
         //3. "description" - Verify "Enter message" section on Inputs page displaying expected txt
 
-        //4. "enable/disable" - Verify Notes page header "Curriculum" displayed
+        //4. "enable/disable" - Verify Curriculum page header "Curriculum"
 
         //ClassTask 1
+    */
+
+    @Test
+    public void testGoogle(){
+        System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.get("https://google.com");
+
+        Assert.assertEquals(driver.getTitle(), "Google");
+        driver.close();
     }
+
+    @Test(testName = "Test Header")
+    public void test02(){
+        System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.get("http://automation.techleadacademy.io/#/home");
+
+        String actualHeader = driver.findElement(By.id("title")).getText();
+        String expectedHeader = "Automation with Selenium";
+
+        Assert.assertEquals(actualHeader, expectedHeader);
+        driver.close();
+    }
+
+    @Test(testName = "Test Input", description = "Testing if input data is displayed as expected")
+    public void test03(){
+        System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.get("http://automation.techleadacademy.io/#/inputs");
+
+        String testData = "Blue Sky";
+        driver.findElement(By.id("message")).sendKeys(testData);
+        driver.findElement(By.name("button1")).click();
+
+        WebElement element = driver.findElement(By.xpath("//span[@name='message1' and text()='" + testData + "']"));
+        Assert.assertTrue(element.isDisplayed());
+
+        driver.close();
+    }
+
+    @Test(testName = "Curriculum Page Test", description = "Testing main header of the page", enabled = false)
+    public void test04(){
+        System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.get("http://automation.techleadacademy.io/#/curriculum");
+
+        Assert.assertTrue(driver.findElement(By.xpath("//h1[text()='Curriculum']")).isDisplayed());
+        driver.close();
+    }
+
 
 
 }
