@@ -12,7 +12,7 @@ public class _01_BasicInteractions {
          * 3. Click Search button
          * 4. Get value of href attribute of Wikipedia linkText of search result mini window
          *  4.1 Verify expected vs actual
-         * 5. Print out header of the first result item
+         * 5. Print out header of the first item from the search result
          *  5.1 Verify if word contains a word "selenium"
          * 6. Verify if button "Shopping" is there. (is enabled)
          * 7. Verify if google logo on top left of the page is displayed
@@ -21,20 +21,20 @@ public class _01_BasicInteractions {
         System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
         WebDriver driver = new ChromeDriver();
 
-        //1
+        //1.
         driver.get("https://google.com");
 
-        //2
+        //2. How to INPUT a text in input fields?
         driver.findElement(By.name("q")).sendKeys("selenium");
 
-        //3
+        //3. How to CLICK on a button?
         driver.findElement(By.name("btnK")).click();
 
-        //4
+        //4. How to get value of any attribute of the element?
         String href = driver.findElement(By.linkText("Wikipedia")).getAttribute("href");
         System.out.println(href);
 
-        //4.1
+        //4.1 Verify expected vs actual
         String expectedHref = "https://en.wikipedia.org/wiki/Selenium";
         if (href.equals(expectedHref)){
             System.out.println("PASS");
@@ -42,11 +42,11 @@ public class _01_BasicInteractions {
             System.out.println("FAIL");
         }
 
-        //5
+        //5. Print out header of the first item from the search result
         String result = driver.findElement(By.tagName("h3")).getText();
         System.out.println(result);
 
-        //5.1
+        //5.1 Verify if word contains a word "selenium"
         String expectedWord = "selenium";
         if(result.toLowerCase().contains(expectedWord)){
             System.out.println("PASS");

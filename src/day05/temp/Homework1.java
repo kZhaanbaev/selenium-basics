@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 
-public class Homework1_Solved {
+public class Homework1 {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
         WebDriver driver = new ChromeDriver();
