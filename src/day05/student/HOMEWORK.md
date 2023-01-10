@@ -27,7 +27,7 @@
 <br/>
 <hr/>
 
-![img.png](img/img5.png)
+![img.png](../../day05a/temp/img/img5.png)
 <br/>
 <br/>
 <hr/>

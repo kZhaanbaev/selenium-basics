@@ -1,10 +1,11 @@
 package day05.student;
 
 public class ClassTask1 {
-    public static void main(String[] args) {
-        /**
-         * Task: Print out all links on the bottom of the home page
-         * Note: Don't forget to connect your chromeDriver first
-         */
-    }
+    /**
+     * 1. Open "https://www.howstuffworks.com/"
+     * 2. Click on navigation button
+     * 3. Verify h1 header has same text as navigation button
+     * 4. Apply logic on step 3 to all pages from navigation bar
+     */
+
 }
