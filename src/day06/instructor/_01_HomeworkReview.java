@@ -8,30 +8,40 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 
 public class _01_HomeworkReview {
-    /**
-     * day05.ClassTask2
-     *
-     * 1. Create an array of String with test data
-     * 2. Capture all input elements using common locator
-     * 3. Input test data above using loop
-     */
-
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
         WebDriver driver = new ChromeDriver();
+        driver.get("http://automation.techleadacademy.io/#/home");
 
-        String[] data = {"John", "Smith", "j.smith@test.com", "222-222-2222", "Address", "NYC", "New York", "12345"};
+        driver.get("https://www.saucedemo.com/");
 
-        driver.get("http://automation.techleadacademy.io/#/inputs");
+        driver.findElement(By.id("user-name")).sendKeys("standard_user");
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
 
-        List<WebElement> inputs = driver.findElements(By.cssSelector(".form-control"));
+        //inventory_item_name
+        //inventory_item_price
 
-        for(int i = inputs.size()-1; i >= 3; i--){
-            inputs.get(i).sendKeys(data[i-3]);
+        List<WebElement> names = driver.findElements(By.className("inventory_item_name"));
+        List<WebElement> prices = driver.findElements(By.className("inventory_item_price"));
+
+//        for(WebElement each: names){
+//            System.out.println(each.getText());
+//        }
+
+        names.forEach(each -> System.out.println(each.getText()));
+
+//
+//        for(WebElement each: prices){
+//            System.out.println(each.getText());
+//        }
+
+        //printed out combined both lists
+        for(int i = 0; i < names.size(); i++){
+            System.out.println(names.get(i).getText() + " - " + prices.get(i).getText());
         }
 
-
-        //driver.close();
+        driver.close();
     }
 
 }

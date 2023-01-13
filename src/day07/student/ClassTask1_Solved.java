@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 
-public class _01_ClassTask_Solved {
+public class ClassTask1_Solved {
     /**
      * 	- Class Task:
      * 		○ 1. Navigate to "https://www.google.com/"
@@ -18,7 +18,7 @@ public class _01_ClassTask_Solved {
      */
 
     public static void main(String[] args) throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/Users/kuba/TLA/Selenium/B-7/libs/drivers/chromedriver");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
@@ -34,6 +34,8 @@ public class _01_ClassTask_Solved {
         List<WebElement> companies = driver.findElements(By.cssSelector("div.vNEEBe"));
 
         companies.forEach(name -> System.out.println(name.getText()));
+
+        driver.close();
 
     }
 

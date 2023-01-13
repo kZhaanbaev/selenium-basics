@@ -1,10 +1,10 @@
-package day06.instructor;
+package day07.instructor;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class _00_Review {
+public class _01_Review {
     /**
      * basic selectors
      * css selectors:
@@ -24,6 +24,9 @@ public class _00_Review {
         driver.findElement(By.cssSelector("button[class='classValue']")).click();
         driver.findElement(By.cssSelector("button[name='attrValue']")).click();
 
+        //we can omit tag name and use asterisk if we don't care about what tag name is
         driver.findElement(By.cssSelector("*[class='value']"));
+
+
     }
 }
