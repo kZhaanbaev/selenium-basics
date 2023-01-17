@@ -11,38 +11,44 @@ public class _02_ClassTask_Solved {
     public static void main(String[] args) throws InterruptedException {
         /**
          * 1. navigate to https://github.com/
-         * 2. print out following section
-         *      83+ million
-         *      4+ million
-         *      200+ million
-         *      90%
-         *
-         * 3. Input "test@test.com" in email address field
-         * 4. Click on "Sign up for GithHub" button
-         * 5. Verify text "Email domain could not be verified" is displayed
-         * Note: add Thread.sleep() - about 4-5 seconds if text doesn't show up fast enough
+         * 2. Click on Pricing nav button
+         * 3. Print out all questions under "Frequently asked questions" section
+         * 4. Click on Sign in button
+         * 5. Input "test@test.com" in email address field
+         * 6. Input "test" in password field
+         * 7. Click on "Sign in" button
+         * 8. Verify a web element with text "Incorrect username or password." is displayed
+         * Note: add Thread.sleep() - about 2-3 seconds if text doesn't show up fast enough
          */
 
-        System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/Users/kuba/TLA/Selenium/B-7/libs/drivers/chromedriver");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
         driver.get("https://github.com");
 
-        List<WebElement> headers = driver.findElements(By.xpath("//*[starts-with(@class, 'f3-mktg')]"));
+        driver.findElement(By.xpath("//a[text()='Pricing']")).click();
+
+        Thread.sleep(2000);
+
+        List<WebElement> headers = driver.findElements(By.xpath("//h3[starts-with(@class, 'd-inline-block')]"));
         headers.forEach(a -> System.out.println(a.getText()));
 
-        driver.findElement(By.xpath("//input[@id='user_email']")).sendKeys("test@test.com");
+        driver.findElement(By.xpath("//a[contains(text(), 'Sign in')]")).click();
 
-        driver.findElement(By.xpath("//button[contains(text(), 'Sign up for GitHub')]")).click();
+        Thread.sleep(2000);
 
-        Thread.sleep(6000);
+        driver.findElement(By.xpath("//input[@id='login_field']")).sendKeys("test@test.com");
 
-        String actualErrText = driver.findElement(By.xpath("//p[@id='email-err']")).getText();
+        driver.findElement(By.xpath("//input[@id='password']")).sendKeys("test@test.com");
 
-        System.out.println(actualErrText.equals("Email domain could not be verified"));
+        driver.findElement(By.xpath("//input[@value='Sign in']")).click();
 
-        System.out.println(driver.findElement(By.xpath("//p[text()='Email domain could not be verified']")).isDisplayed());
+
+        Thread.sleep(2000);
+
+        System.out.println(driver.findElement(By.xpath("//*[contains(text(),'Incorrect username or password.')]")).isDisplayed());
+
 
 
         driver.close();

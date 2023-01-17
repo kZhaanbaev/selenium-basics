@@ -12,26 +12,31 @@ public class _02_Xpath {
         //working with texts
         //a[text()='Registry']
         //a[text()='Alert']
+        //locate and print href values of Saucedemo link
+
 
         //sub-strings of text - starts-with
         //a[starts-with(text(), 'Book')]
+        //locate all nav button that starts with text "Select"
+
+
+        //sub-string of attribute - starts-with
+        //css -> a[class^='value']
+        //xpath -> //a[starts-with(@class, 'value')]
+        //print out all links that has href starts with "https"
 
 
         //sub-strings of text - contains
         //a[contains(text(), 'Music')]
+        //print out all links that contain letter "a"
 
-
-        //sub-string of attribute - start-with
-        //css -> a[class^='value']
-        //xpath -> //a[starts-with(@class, 'value')]
-        //a[starts-with(@href, 'http://the-internet')]
 
         //sub-string of attribute - contains
         //css -> a[class*='value']
         //xpath -> //a[contains(@class, 'value')]
-        //*[contains(@class, 'nav_a')]
+        //print out all links that contain href value containing "www"
 
 
-        //*[text()='Car' or contains(@name, 'car') or starts-with(text(), 'C')]
+        driver.close();
     }
 }
