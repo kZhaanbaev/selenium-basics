@@ -1,60 +1,81 @@
 package day10.instructor;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.List;
-
 public class _01_Xpath {
+    //NOTE: solve ClassTask2 from previous day
+
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
-        //immediate children
-        //div[@class='value']/a
-        //div[@class='value]/child::a
+        //parent -> child
+
+        //css ->    div[class='value']>div[alt='value'] -> immediate children
+        //xpath ->  //div[@class='value']/div[@alt='value'] -> immediate children
+        //Locating both direct children of parent1 only
 
 
-        //all following webElements regardless the hierarchy, by giving the starting point
-        //div[@class='value']//a
-        //div[@class='value]/following::a
+        //parent -> all children
 
-        //all preceding webElements regardless the hierarchy, by giving the starting point
-        //div[@class='value']//a
-        //div[@class='value]/preceding::a
-
-        //preceding-sibling
-        //following-sibling
-        //div[@id='porsche']/div/div[1]/div[4]/following-sibling::div
-        //*[text()='Files']/preceding-sibling::a
-
-        //parent
-        //tag[@attr='value']/parent::tag
-        //div[text()='Mercedes C-Class']/parent::div/div[@class='vehicle-type']
-
-        //ancestor
-        //tag[@attr='value']/ancestor::tag
-        //div[text()='Mercedes C-Class']/ancestor::div[@id='mercedes']
+        //css ->    div[class='value'] div[alt='value'] -> any webElement under parent hierarchy
+        //xpath ->  //div[@class='value']//div[@alt='value'] -> any webElement under parent hierarchy
+        //Locating all children of parent1 only
 
 
-        //descendant
-        //tag[@attr='value']/descendant::tag
+        //indexes [n]
+
+        /**
+         * //div[text()='bird'][1]
+         *
+         * Note: index starts with 1 not 0
+         * Exapmle: locating Alert nav button by index
+         * //nav[1]/a[7]
+         *
+         * Example: locating E-commerce link on homepage
+         * //div[@class='home-page']/a[4]
+         *
+         * TASK: Locate 1st direct child of parent1 only
+         *
+         */
 
 
+        //keywords: last(), last()-n
 
-        driver.get("http://automation.techleadacademy.io/#/selectors");
-//        List<WebElement> names = driver.findElements(By.xpath("(//div[text()='Porsche Macan'])[1]/preceding::div[@name]"));
-//        names.forEach(each -> System.out.println(each.getText()));
+        /**
+         * //tag[@attr='value']/tag[last()]
+         *
+         * Example: locating last link 'Shopping Cart' using last() keyword
+         *  //div[@class='home-page']/a[last()]
+         *  or
+         *  //div[@class='home-page']/a[2]
+         *
+         * Example: locating link 'Mercury tours' using last()-n keyword
+         * //div[@class='home-page']/a[last()-5]
+         *
+         * TASK: Locate last direct child of parent1 only using last() keyword
+         */
 
-        System.out.println(driver.findElement(By.xpath("(//div[text()='Sub-child 1'])[1]/ancestor::div[@id='ancestor']/div")).getText());
+
+        //and, or keywords in xpath
+
+        /**
+         * //tag[@attr1='value1' or @attr2='value2]
+         *
+         * Example: locate cars that contains text Class or Cayenne
+         * //div[contains(text(), 'Class') or contains(text(), 'Cayenne')]
+         *
+         * //tag[@attr1='value1' and @attr2='value2]
+         *
+         * Example: locate cars that contains text Mercedes and Class
+         * //div[contains(text(), 'Class') and contains(text(), 'Mercedes')]
+         */
 
 
         driver.close();
 
-
-
+        //NOTE: ClassTask1
     }
 }
