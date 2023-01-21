@@ -12,12 +12,12 @@ public class _02_RadioBtn {
         driver.get("http://automation.techleadacademy.io/#/selectclass");
 
         //section: "Radio Button"
+        //Only 1 radio button can be selected at once.
         driver.findElement(By.id("exampleRadios2")).click();
 
         Thread.sleep(3000);
         driver.findElement(By.id("exampleRadios1")).click();
 
-        //ClassTask 2: 15min
 
     }
 }

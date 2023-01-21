@@ -1,6 +1,6 @@
 package day11.student;
 
-public class _04_ClassTask {
+public class _04_Homework {
     /**
      * Alerts
      * Password Generator section:

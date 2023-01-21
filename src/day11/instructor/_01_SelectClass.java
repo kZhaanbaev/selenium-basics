@@ -16,6 +16,9 @@ public class _01_SelectClass {
         driver.get("http://automation.techleadacademy.io/#/selectclass");
 
         //when to use Select class?
+        /**
+         * use Select class only when you see <select></select> tags on drop down menus
+         */
         Select select = new Select(driver.findElement(By.name("select1")));
 
         //select by text
@@ -31,12 +34,7 @@ public class _01_SelectClass {
         List<WebElement> allOptions = select.getOptions();
         allOptions.forEach(each -> System.out.println(each.getText()));
 
-        //ClassTask 1: 10min
-        Select select2 = new Select(driver.findElement(By.name("select2")));
-
-        List<WebElement> allOptions2 = select2.getOptions();
-        allOptions2.forEach(each -> System.out.println(each.getText()));
-        select2.selectByValue("Yellow");
+        //NOTE: ClassTask 1 - 10min
 
 
         Thread.sleep(3000);

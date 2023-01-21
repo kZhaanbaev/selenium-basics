@@ -13,7 +13,7 @@ public class _02_Checkboxes {
 
 
         //section: "Check box"
-        //to check click 1 time
+        //to check click 1 time. Multiple options can be checked at the same time.
         driver.findElement(By.id("defaultCheck1")).click();
         driver.findElement(By.id("defaultCheck3")).click();
 
@@ -24,6 +24,8 @@ public class _02_Checkboxes {
 
         Thread.sleep(3000);
         driver.findElement(By.id("defaultCheck3")).click();
+
+        //driver.close();
 
     }
 }

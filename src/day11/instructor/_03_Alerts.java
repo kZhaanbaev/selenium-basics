@@ -11,7 +11,7 @@ public class _03_Alerts {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
-        //README file
+        //NOTE: Follow README file first
 
         //Example: Add apple, Eat apple etc.
         driver.get("http://automation.techleadacademy.io/#/alert");
@@ -31,6 +31,7 @@ public class _03_Alerts {
         alert2.accept();
 
 
+        //NOTE: ClassTask3
 
         Thread.sleep(3000);
         driver.close();
