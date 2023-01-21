@@ -44,7 +44,7 @@ public class _02_MultipleWindows {
         System.out.println(driver.getTitle());
 
         Thread.sleep(3000);
-        //Test second link text
+        //Test title of Internet link
         driver.findElement(By.linkText("Internet")).click();
 
         Thread.sleep(3000);
@@ -64,7 +64,5 @@ public class _02_MultipleWindows {
 
         driver.quit();
 
-        //Class Task 2 - Homework
-        
     }
 }

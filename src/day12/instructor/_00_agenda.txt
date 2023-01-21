@@ -1,0 +1,5 @@
+1. Brief review of main options of xpath locators
+2. Review ClassTask2 from day10
+3. Review ClassTask3 from day11
+4. Review Homework from day11
+5. Pop-Ups and Multiple Windows

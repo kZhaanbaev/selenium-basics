@@ -1,6 +1,6 @@
 package day12.student;
 
-public class _02_ClassTask {
+public class _02_Homework {
     /**
      *  URL: http://automation.techleadacademy.io/#/multiplewindow
      *  1. Print out texts of each button on the page (Launch TLA, Launch Google, Launch Facebook)

@@ -13,7 +13,7 @@ public class _01_PopUps {
 
         //What is browser pop-ups? Pop-ups vs alerts?
 
-        //Example: Pop-Up -> Message
+        //Example: Pop-Up page -> Message button
         driver.findElement(By.tagName("button")).click();
         driver.findElement(By.id("exampleInputEmail1")).sendKeys("This is my message");
 
