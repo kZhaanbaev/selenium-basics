@@ -1,9 +1,12 @@
 package day10.student;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class _02_ClassTask_Solved {
     /**
@@ -18,7 +21,7 @@ public class _02_ClassTask_Solved {
      *  6. Verify it was deleted
      */
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "/Users/kuba/TLA/Selenium/B-7/libs/drivers/chromedriver");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -48,26 +51,48 @@ public class _02_ClassTask_Solved {
         }
         System.out.println(list.get(list.size() - 1).getText());
 
-        //5. Delete newly added statement
-//        driver.findElement(By.xpath("(//button[@class='btn btn-outline-danger ml-1'])[3]")).click();
+        try{
+            driver.findElement(By.xpath("//div[text()='Try your Best -M']")).isDisplayed();
+            System.out.println("New statement was added");
+        }catch (NoSuchElementException e){
+            e.printStackTrace();
+            System.out.println("Adding new statement FAILED");
+        }
+
+
+        //5. Delete newly added statement. Using try catch to avoid program to stop if element is not there.
+
+        try{
+            WebElement newStatement = driver.findElement(By.xpath(
+                    "//div[text()='Try your Best -M']/following-sibling::div//button[contains(@class, 'btn-outline-danger')]"
+            ));
+            newStatement.click();
+        }catch (NoSuchElementException e){
+            e.printStackTrace();
+        }
+
+        Thread.sleep(2000);
+
+        /**
+         * 6. Verify it was deleted
+         * Checking if element was deleted or not using finElements() method is another way of handling
+         * NoSuchElementException. If element is not present the size would be zero instead of throwing
+         * and exception.
+         */
+        List<WebElement> deletedElement = driver.findElements(By.xpath(
+                "//div[text()='Try your Best -M']"
+        ));
+
+        if (deletedElement.size() == 0){
+            System.out.println("PASS: Newly added statement was successfully deleted");
+        }else {
+            System.out.println("FAIL: Newly added statement still exists, was not deleted");
+        }
+
 
         Thread.sleep(3000);
 
-        //6. Verify it was deleted
-
-        String input = driver.findElement(By.xpath("//*[text()='Try your Best -M']")).getText();
-
-        if (input.equals("Try your Best -M")) {
-            System.out.println("FAIL: input was not deleted");
-        } else {
-            System.out.println("PASS: word is deleted");
-        }
-
         driver.close();
     }
 
-
-
-        driver.close();
-    }
 }
