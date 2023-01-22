@@ -1,6 +1,6 @@
-package day12.student;
+package day11.student;
 
-public class _02_Homework_Solved {
+public class _04_Homework_Solved {
     /**
      *  URL: http://automation.techleadacademy.io/#/multiplewindow
      *  1. Print out texts of each button on the page (Launch TLA, Launch Google, Launch Facebook)
