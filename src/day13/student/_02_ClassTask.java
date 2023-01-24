@@ -1,6 +1,7 @@
 package day13.student;
 
 public class _02_ClassTask {
+    //Left for the next day, did not have enough time
     /**
      * 		a. Open practice website -> iframes section
      * 		b. In Budget Tracker website:
