@@ -13,15 +13,32 @@ import java.awt.event.KeyEvent;
 
 
 public class _04_RobotClass {
+    //NOTE: ReadMe.md file
     public static void main(String[] args) throws InterruptedException, AWTException {
-        System.setProperty("webdriver.chrome.driver", "/Users/kuba/Desktop/Selenium/libs/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/Users/kuba/TLA/Selenium/B-7/libs/drivers/chromedriver");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("http://automation.techleadacademy.io/#/files");
 
-        Robot robot = new Robot();
         Actions actions = new Actions(driver);
 
+        //Robot Class
+        Robot robot = new Robot();
+
+        //to move mouse
+        robot.mouseMove(500, 700);
+
+        //to click mouse button and hold
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+
+        //to move to destination location
+        robot.mouseMove(900, 800);
+
+        //release mouse button
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+
+
+        //uploading a file from computer
         StringSelection path = new StringSelection("C:\\Users\\jakyp\\Desktop\\test.txt");
 
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(path, null);

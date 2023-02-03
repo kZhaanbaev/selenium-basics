@@ -1,0 +1,41 @@
+URL: https://employee-management-39848.herokuapp.com
+
+US1002 Login page
+    User should be able to login with valid credentials
+    username: user
+    password: user123
+
+
+--------------------
+
+US1003 New employee form
+    User should have a form to fill out user information to add to the system.
+    Following fields are required:
+        First name
+        Last name
+        Email
+        Role
+        Department
+
+
+--------------------
+
+US1004 Add a new employee
+    User should be able to add a new employee to the table
+
+
+--------------------
+
+US1005 Display options
+    I would like to have 4 options to display certain number of employees on the table
+        10
+        25
+        50
+        All
+
+
+--------------------
+
+US1006 Employee filter
+    As a user I need to have an option to filter out the table view based on the
+    search criteria I input. Search should return any employee that has exact matching with the keyword.
